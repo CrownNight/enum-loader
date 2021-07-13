@@ -132,7 +132,7 @@ function _getEnumDataSourceDictionary(sources) {
 
 module.exports = function (source) {
   let contentStr = "";
-  const hasEnum = source.includes(" enum ");
+  const hasEnum = source.includes("enum ");
   if (!hasEnum) {
     return source;
   }
