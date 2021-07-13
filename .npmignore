@@ -1,0 +1,6 @@
+src/*
+.babelrc
+.gitignore
+webpack.*.js
+yarn.lock.json
+package-lock.json

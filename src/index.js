@@ -5,7 +5,7 @@ const annotationExp = /(?:^|\n|\r)\s*\/\*[\s\S]*?\*\/\s*(?:\r|\n|$)/g;
 const annotationNameExp = /\@name(.*)/;
 const annotationDesExp = /\@description(.*)/;
 
-function _getEnumName(nameContent: string) {
+function _getEnumName(nameContent) {
   const nameArr = nameContent
     .split("\n")
     .filter((x) => x.includes("enum"))[0]
@@ -16,8 +16,8 @@ function _getEnumName(nameContent: string) {
   }
   return nameArr[index + 1];
 }
-function _getEnumValueDictionary(sources: string) {
-  const _enumValueDic: { [key: string]: string } = {};
+function _getEnumValueDictionary(sources) {
+  const _enumValueDic = {};
   const _enumContentArr = sources.split("}").filter((x) => x.includes("enum"));
   _enumContentArr.forEach((content) => {
     if (content.startsWith("//")) {
@@ -47,8 +47,8 @@ function _getEnumValueDictionary(sources: string) {
   return _enumValueDic;
 }
 
-function _getEnumNamespaceDictionary(sources: string) {
-  const _enumNamespaceDic: { [key: string]: any } = {};
+function _getEnumNamespaceDictionary(sources) {
+  const _enumNamespaceDic = {};
   const _nameArr = sources.split("\n").filter((x) => x.includes("enum"));
   _nameArr.forEach((nameStr) => {
     if (nameStr.startsWith("//")) {
@@ -70,15 +70,15 @@ function _getEnumNamespaceDictionary(sources: string) {
   return _enumNamespaceDic;
 }
 
-function _getEnumDataSourceDictionary(sources: string) {
+function _getEnumDataSourceDictionary(sources) {
   const _enumValueDic = _getEnumValueDictionary(sources);
   const _enumContentArr = sources.split("}").filter((x) => x.includes("enum"));
   if (!_enumContentArr.length) {
     return null;
   }
-  let _enumDataSourceDic: { [key: string]: any } = {};
+  let _enumDataSourceDic = {};
   _enumContentArr.forEach((content) => {
-    let labelArr: any = [];
+    let labelArr = [];
     const name = _getEnumName(content);
     const annotations = content.match(annotationExp);
     if (annotations && annotations.length) {
@@ -130,9 +130,9 @@ function _getEnumDataSourceDictionary(sources: string) {
   return _enumDataSourceDic;
 }
 
-module.exports = function (source: string) {
+module.exports = function (source) {
   let contentStr = "";
-  const hasEnum = source.includes("enum");
+  const hasEnum = source.includes(" enum ");
   if (!hasEnum) {
     return source;
   }

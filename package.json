@@ -2,11 +2,12 @@
   "name": "enum-loader",
   "version": "1.0.0",
   "description": "enum loader for webpack",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "publish": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,14 @@
     "loader",
     "webpack"
   ],
+   "files": [
+     "dist"
+   ],
   "author": "CrowNight",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "html-webpack-plugin": "^5.3.2",
     "ts-loader": "^9.2.3",
