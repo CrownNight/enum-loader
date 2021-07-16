@@ -67,7 +67,7 @@ chainWebpack(config: any) {
 # 示例
 定义枚举
 ```js
-enum ENUM_TEST {
+enum ENUM {
   /**
    * @name TEST
    * @description 测试
@@ -77,7 +77,7 @@ enum ENUM_TEST {
   * @name STATUS
   * @description 状态
  */
- STATUS = 1,
+ STATUS = 0,
   /**
   * @name ALL
   * @description 全部
@@ -90,7 +90,7 @@ enum ENUM_TEST {
 // 调用枚举的toArray方法，目前需要忽略tslint的检测
 
 // @ts-ignore
-ENUM_TEST.toArray();
+ENUM.toArray();
 
 //输出
 [
@@ -100,7 +100,7 @@ ENUM_TEST.toArray();
   },
   {
     "label": "状态",
-    "value": "1"
+    "value": "0"
   },
   {
     "label": "全部",
@@ -109,11 +109,11 @@ ENUM_TEST.toArray();
 ]
 
 //@ts-ignore
-ENUM_TEST.toDictionary();
+ENUM.toDictionary();
 
 // 输出
 {
-  1: {label: "状态", value: "1"}
+  1: {label: "状态", value: "0"}
   ALL: {label: "全部", value: "ALL"}
   TEST: {label: "测试", value: "TEST"}
 }
