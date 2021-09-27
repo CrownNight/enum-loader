@@ -43,7 +43,6 @@ function _getEnumValueDictionary(sources) {
         _enumValueDic[`${name}_${matchName}`] = value;
       });
   });
-  console.log("_enumValueDic", _enumValueDic);
   return _enumValueDic;
 }
 
